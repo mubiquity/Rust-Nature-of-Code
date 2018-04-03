@@ -48,7 +48,8 @@ pub fn run(amount: i32) {
 
 struct Walker {
     x: f64,
-    y: f64
+    y: f64,
+    color: [f32; 4]
 }
 
 impl Walker {
@@ -58,7 +59,12 @@ impl Walker {
         let x = rng.gen_range(0.0, size.width as f64);
         let y = rng.gen_range(0.0, size.height as f64);
 
-        Walker {x, y}
+        let mut color = [0.0; 4];
+        for mut val in color.iter_mut() {
+            *val = rng.gen_range(0.0, 1.0);
+        }
+
+        Walker {x, y, color}
     }
 
     fn event<E: GenericEvent>(&mut self, e: &E) {
@@ -75,7 +81,7 @@ impl Walker {
     fn draw<G: Graphics>(&self, c: &Context, g: &mut G) {
         use graphics::Rectangle;
 
-        Rectangle::new([0.0, 0.0, 1.0, 1.0])
+        Rectangle::new(self.color)
             .draw([self.x, self.y, 1.0, 1.0], &c.draw_state, c.transform, g);
     }
 }
