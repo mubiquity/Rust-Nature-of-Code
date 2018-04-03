@@ -1,0 +1,9 @@
+name: Nature of Code
+version: "0.1.0"
+author: mubiquity <cryan118@gmail.com>
+about: Implementing the Nature of Code examples in Rust
+args:
+    - walker:
+        short: w
+        long: walker
+        help: Runs the random walker example
