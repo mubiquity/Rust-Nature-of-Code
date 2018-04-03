@@ -67,6 +67,8 @@ impl Walker {
         Walker {x, y, color}
     }
 
+    // TODO: This should be an update function that uses UpdateEvent
+    // TODO: Handle the case where it is moved off screen
     fn event<E: GenericEvent>(&mut self, e: &E) {
         if let Some(_) = e.update_args() {
             match Direction::random() {
@@ -102,7 +104,7 @@ impl Direction {
             1 => Direction::Right,
             2 => Direction::Up,
             3 => Direction::Down,
-            _ => Direction::Left // To stop rusts complaints that it is non-exhaustive
+            _ => Direction::Left // To stop rust complaining that it is non-exhaustive
         }
     }
 }

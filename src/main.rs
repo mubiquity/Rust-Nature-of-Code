@@ -10,6 +10,6 @@ fn main() {
     let matches = clap::App::from_yaml(yaml).get_matches();
 
     if matches.is_present("walker") {
-        random_walker::run(1000);
+        random_walker::run(500);
     }
 }
