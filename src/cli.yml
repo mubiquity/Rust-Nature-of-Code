@@ -15,3 +15,7 @@ args:
         short: b
         long: ball
         help: Runs the acceleration ball example
+    - mouse-ball:
+        short: m
+        long: mouse-ball
+        help: Runs the ball following mouse example

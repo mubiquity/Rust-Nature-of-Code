@@ -15,5 +15,5 @@ pub trait Drawable {
 }
 
 pub trait Updatable {
-    fn update<E: GenericEvent>(&mut self, args: &E);
+    fn update<E: GenericEvent>(&mut self, e: &E);
 }
