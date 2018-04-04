@@ -66,7 +66,7 @@ impl MouseBall {
         let velocity = Vector2::zero();
         let acceleration = Vector2::zero();
         let force = Vector2::zero();
-        let mass = rng.gen_range(5.0, 15.0);
+        let mass = rng.gen_range(5.0, 35.0);
 
         let mut color = [0.0; 4];
         for mut col in color.iter_mut() {
@@ -86,7 +86,7 @@ impl Drawable for MouseBall {
         use graphics::Ellipse;
 
         Ellipse::new(self.color)
-            .draw([self.position.x, self.position.y, 10.0, 10.0], &c.draw_state, c.transform, g);
+            .draw([self.position.x, self.position.y, self.mass, self.mass], &c.draw_state, c.transform, g);
     }
 }
 
@@ -95,9 +95,9 @@ impl  Updatable for MouseBall {
         if let Some(pos) = e.mouse_cursor_args() {
             self.cursor_pos = Vector2::new(pos[0], pos[1]);
         } else if let Some(args) = e.update_args() {
-            self.acceleration =  self.cursor_pos - self.position;
-            self.acceleration = self.acceleration.normalize_to(300.0);
+            self.force =  (self.cursor_pos - self.position) * 10.0;
 
+            self.acceleration = self.force / self.mass;
             self.velocity += self.acceleration * args.dt;
             if self.velocity.magnitude() > 500.0 {
                 self.velocity = self.velocity.normalize_to(500.0);
