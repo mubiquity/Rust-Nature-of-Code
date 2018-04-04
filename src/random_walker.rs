@@ -1,12 +1,9 @@
 #![deny(missing_docs)]
 //! "walks" around the screen choosing random directions.
 
-// TODO: Remove
-#![allow(dead_code)]
-
 use piston::window;
 use piston::window::WindowSettings;
-use piston::event_loop::{Events, EventSettings, EventLoop};
+use piston::event_loop::{Events, EventSettings};
 use piston::input::{GenericEvent, RenderEvent};
 use graphics::{Context, Graphics};
 use glutin_window::GlutinWindow;
@@ -26,7 +23,7 @@ pub fn run(amount: i32) {
 
     let mut walkers: Vec<Walker> = Vec::new();
     for _ in 0..amount {
-        let mut walker = Walker::random(settings.get_size());
+        let mut walker = Walker::random(&settings.get_size());
         walkers.push(walker);
     }
 
@@ -53,7 +50,7 @@ struct Walker {
 }
 
 impl Walker {
-    fn random(size: window::Size) -> Walker {
+    fn random(size: &window::Size) -> Walker {
         let mut rng = rand::thread_rng();
 
         let x = rng.gen_range(0.0, size.width as f64);

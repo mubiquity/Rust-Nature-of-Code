@@ -7,3 +7,7 @@ args:
         short: w
         long: walker
         help: Runs the random walker example
+    - noise-walker:
+        short: n
+        long: nwalker
+        help: Runs the noise walker example

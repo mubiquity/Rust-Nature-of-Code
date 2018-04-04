@@ -4,6 +4,7 @@ extern crate nature_of_code;
 extern crate clap;
 
 use nature_of_code::random_walker;
+use nature_of_code::noise_walker;
 
 fn main() {
     let yaml = load_yaml!("cli.yml");
@@ -11,5 +12,9 @@ fn main() {
 
     if matches.is_present("walker") {
         random_walker::run(500);
+    }
+
+    if matches.is_present("noise-walker") {
+        noise_walker::run(10);
     }
 }
