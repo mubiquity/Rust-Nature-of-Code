@@ -11,3 +11,7 @@ args:
         short: n
         long: nwalker
         help: Runs the noise walker example
+    - ball:
+        short: b
+        long: ball
+        help: Runs the acceleration ball example
