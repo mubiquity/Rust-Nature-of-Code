@@ -12,6 +12,7 @@ use cgmath::prelude::*;
 use cgmath::Vector2;
 
 use rand;
+use rand::distributions::{Normal, IndependentSample};
 use rand::Rng;
 
 pub fn run(amount: usize) {
@@ -61,12 +62,14 @@ struct MouseBall {
 impl MouseBall {
     fn random(size: window::Size) -> MouseBall{
         let mut rng = rand::thread_rng();
+        let normal = Normal::new(12.0, 8.0);
 
         let position = Vector2::new(rng.gen_range(0.0, size.width as f64), rng.gen_range(0.0, size.height as f64));
+
         let velocity = Vector2::zero();
         let acceleration = Vector2::zero();
         let force = Vector2::zero();
-        let mass = rng.gen_range(5.0, 35.0);
+        let mass = normal.ind_sample(&mut rng).abs();
 
         let mut color = [0.0; 4];
         for mut col in color.iter_mut() {
@@ -82,7 +85,7 @@ impl MouseBall {
 }
 
 impl Drawable for MouseBall {
-    fn draw<G: Graphics>(&self, args: &RenderArgs, c: &Context, g: &mut G) {
+    fn draw<G: Graphics>(&self, _args: &RenderArgs, c: &Context, g: &mut G) {
         use graphics::Ellipse;
 
         Ellipse::new(self.color)

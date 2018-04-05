@@ -25,6 +25,6 @@ fn main() {
     }
 
     if matches.is_present("mouse-ball") {
-        mouse_ball::run(20);
+        mouse_ball::run(30);
     }
 }

@@ -80,7 +80,7 @@ impl Ball {
 }
 
 impl Drawable for Ball {
-    fn draw<G: Graphics>(&self, args: &RenderArgs, c: &Context, g: &mut G) {
+    fn draw<G: Graphics>(&self, _args: &RenderArgs, c: &Context, g: &mut G) {
         use graphics::Ellipse;
 
         Ellipse::new(self.color)
