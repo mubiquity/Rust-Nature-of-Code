@@ -7,6 +7,7 @@ use nature_of_code::random_walker;
 use nature_of_code::noise_walker;
 use nature_of_code::ball;
 use nature_of_code::mouse_ball;
+use nature_of_code::planet_gravity;
 
 fn main() {
     let yaml = load_yaml!("cli.yml");
@@ -26,5 +27,9 @@ fn main() {
 
     if matches.is_present("mouse-ball") {
         mouse_ball::run(30);
+    }
+
+    if matches.is_present("planet-gravity") {
+        planet_gravity::run(1);
     }
 }

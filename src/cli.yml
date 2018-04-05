@@ -19,3 +19,7 @@ args:
         short: m
         long: mouse-ball
         help: Runs the ball following mouse example
+    - planet-gravity:
+        short: p
+        long: planet-gravity
+        help: Runs an example with "planets" that are attracted to eachother mimicking gravity
